@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script type="text/javascript">
+
+      var xmlhttp;
+
+      function getStudents() {
+        xmlhttp = getXmlHttpObject();
+        if (xmlhttp == null) {
+          alert("Your browser does not support XMLHTTP!");
+          return;
+        }
+
+
+        var url = "showTable.php";
+        url += "?groupId=1&limit=5";
+        xmlhttp.onreadystatechange = stateChanged;
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send(null);
+      }
+
+      function stateChanged() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("maindiv").innerHTML = xmlhttp.responseText;
+        }
+      }
+
+      function getXmlHttpObject() {
+        if (window.XMLHttpRequest) {
+          return new XMLHttpRequest();
+        }
+        return null;
+      }
+
+    </script>
+  </head>
+
+  <body>
+  Lista studentilor:
+  <div id="maindiv"></div>
+    <input type="button" value="Load Students" onclick="getStudents()"/>
+  </body>
+</html>

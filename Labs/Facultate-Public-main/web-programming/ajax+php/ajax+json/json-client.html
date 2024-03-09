@@ -1,0 +1,50 @@
+<html>
+<head>
+  <script src="jquery-2.1.4.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      $('#students').hide();
+      $("#getStudentsButton").click(function () {
+        $.getJSON(
+            "getStudentsJson.php",
+            { groupId: 1, limit: 20 },
+            renderTable
+        );
+      });
+
+      function renderTable(data) {
+        var trHTML = '';
+        $.each(data, function (i, item) {
+          trHTML += '<tr><td>' + item.id + '</td><td>' + item.displayName + '</td><td>'
+              + item.role + '</td> <td> ' + item.groupId + ' </td></tr>';
+        });
+
+        $('#students').append(trHTML);
+        $('#students').show();
+      }
+
+    });
+  </script>
+</head>
+
+<body>
+
+Lista studentilor din grupul 1:
+<div id="maindiv">
+  <table id="students" border="1">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>GroupId</th>
+    </tr>
+
+  </table>
+
+</div>
+<input id="getStudentsButton" type="button" value="Load students"/>
+
+</body>
+</html>
+

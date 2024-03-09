@@ -1,0 +1,20 @@
+<html>
+<head>
+  <script src="jquery-2.1.4.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#button").click(function () {
+        $.post("showTablePost.php", {groupId: "1", limit: "7"},
+            function (data, status) {
+              $("#maindiv").html(data);
+            });
+      });
+    });
+  </script>
+</head>
+<body>
+Lista studentilor din grupa 2:
+<div id="maindiv"></div>
+<input id="button" type="button" value="Load students"/>
+</body>
+</html>

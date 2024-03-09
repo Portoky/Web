@@ -1,0 +1,149 @@
+
+<!Doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>A page demonstrating flex display, and dogs</title>
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		header {
+			position: fixed;
+			width: 100%;
+		}
+
+		header > div.navheader {
+			background: #000022;
+			color: #eeeeee;
+			width: 100%;
+			padding-top: 1%;
+			padding-bottom: 1%;
+			display: flex;
+			justify-content: flex-start;
+		}
+
+		footer {
+			background: #000022;
+			color: #eeeeee;
+			width: 100%;
+			height: 10%;
+			padding-top: 1.5%;
+			padding-bottom: 1.5%;
+		}
+
+		.main-img {
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+		.container {
+			margin-left: auto;
+			margin-right: auto;
+			width: 80%;
+			display: flex;
+			justify-content: space-evenly;
+			padding-top: 8%;
+			padding-bottom: 8%;
+		}
+
+		.panel {
+			width: 25%;
+			box-shadow: 4px 6px 6px -2px #aaaaff;
+			border: 1px solid #aaaaff;
+			padding: 8px;
+		}
+
+		.burgermenu div {
+  			width: 10%;
+  			height: 5px;
+  			background-color: white;
+  			margin: 4px 0;
+		}
+		.burgermenu {
+			width: 25%;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.navheader > span {
+			width: 20%;
+			font-size: 1.2rem;
+			/*font-weight: bold;*/
+		}
+
+		.separator {
+			width: 100px;
+			height: 10%;
+		}
+
+		.header-sep {
+			width: 100%;
+			height: 5px;
+			background: #aaaaee;
+			position: fixed;
+			margin: 0;
+			padding: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+			<div class="navheader">
+				<div class="burgermenu">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<span>About</span>
+				<span>Contents</span>
+				<span>Miscellaneous</span>
+			</div>
+			<div class="header-sep"></div>
+	</header>
+	
+	<img class="main-img" src="newton.jpg"/>
+	<div class="separator"></div>
+	<main>
+		<section class="container">
+			<article class="panel">
+				<h3>Panel #1</h3><hr/>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae dui at eros dictum finibus vel eget leo. Nam feugiat pharetra orci, eget ultricies erat imperdiet eu. Vivamus convallis, nunc eget imperdiet scelerisque, eros elit lobortis sapien, id mattis enim felis sit amet turpis. 
+				</p>
+			</article>
+			<article class="panel">
+				<h3>Panel #2</h3><hr/>
+				<p>
+					Praesent semper sapien mi, quis mollis tellus rutrum id. Nullam fringilla elementum gravida. Duis diam massa, hendrerit in dapibus vitae, semper id est. Quisque tempus nibh vehicula, porttitor est et, tempus metus. Praesent sed euismod dolor. Integer suscipit luctus mi a condimentum. Praesent pulvinar, magna vel feugiat viverra, ex felis lobortis diam, in gravida nulla nisi sed purus. Ut vestibulum porttitor tristique. Mauris vel quam vel risus imperdiet tristique. Aenean vehicula iaculis leo at bibendum. Curabitur eget tincidunt tellus, et porttitor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</p>
+			</article>
+			<article class="panel">
+				<h3>Panel #3</h3><hr/>
+				<p>
+					Aenean aliquam turpis ac orci pharetra pharetra. Cras maximus nulla suscipit libero euismod aliquet. Duis pharetra hendrerit ex id faucibus. Donec vulputate justo id dolor mollis rutrum. Etiam iaculis velit vitae lobortis venenatis. Phasellus pharetra enim sit amet neque ultricies, vitae tristique lectus volutpat. Sed hendrerit ex quis magna venenatis porttitor.
+				</p>
+			</article>
+		</section>
+		<div class="separator"></div>
+		<section class="container" style="border-top: 1px solid #aaaaff;">
+			<article class="panel">
+				<h3>Panel #4</h3><hr/>
+				<p>Text...</p>
+			</article>
+			<article class="panel">
+				<h3>Panel #5</h3><hr/>
+				<p>Text...</p>
+			</article>
+		</section>
+	</main>
+
+	<footer></footer>
+</body>
+</html>

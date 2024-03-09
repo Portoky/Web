@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html>
+	<head>
+		<style type="text/css">
+/*			#div1 {
+				transition-property: width;
+				transition-duration: 10s;
+				background-color: red;
+				width: 500px;
+			}
+			#parent1 {
+				width: 500px;
+				height: 30px;
+			}
+			#parent1:hover #div1 { width: 100px }
+
+			#div2 {
+				width: 20px;
+				transition: width 3s, transform 8s;
+				background-color: blue;
+			}
+
+			#parent2:hover #div2 {
+				width: 780px;
+				transform: rotate(360deg);
+				border: 1px solid green;
+			}
+*/
+		@keyframes move { 
+			0% { left: 100px; } 
+			40% { left: 330px; }
+			100% { left: 550px; } 
+		}
+		
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			animation: move 5s;
+  			position: relative;
+		}
+
+		</style>
+	</head>
+	<body>
+
+<div></div>
+<!-- 		<div id="parent1">
+			<div id="div1">Test 1</div>
+		</div>
+
+		<p></p>
+		<div id="parent2">
+			<div id="div2">Test 2</div>
+		</div>
+ -->
+	
+
+	</body>
+<html>
