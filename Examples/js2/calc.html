@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      var calculator = {};
+
+      function validate(n) {
+        return !isNaN(n);
+      }
+
+      function calculate(operation) {
+        if (initCalculator()) {
+          var result = document.getElementById("resultSpan");
+          switch (operation) {
+            case "add": {
+              result.innerHTML = calculator.a + calculator.b;
+              break;
+            }
+            case "multiply": {
+              result.innerHTML = calculator.a * calculator.b;
+              break;
+            }
+            case "extract": {
+              result.innerHTML = calculator.a - calculator.b;
+              break;
+            }
+            case "divide": {
+              if (calculator.b === 0) {
+                console.log("ERROR");
+                alert("Cannot divide with 0!");
+                break;
+              }
+              result.innerHTML = calculator.a / calculator.b;
+            }
+            default: {
+              break;
+            }
+          }
+        }
+      }
+
+      function add() {
+        calculate("add");
+      }
+
+      function multiply() {
+        calculate("multiply");
+      }
+
+      function extract() {
+        calculate("extract");
+      }
+      function divide() {
+        calculate("divide");
+      }
+
+      function initCalculator() {
+        var inputOne = document.getElementById("inputOne");
+        var inputTwo = document.getElementById("inputTwo");
+        var inputOneValue = inputOne.value;
+        var inputTwoValue = inputTwo.value;
+
+        if (!validate(inputOneValue) || !validate(inputTwoValue)) {
+          console.log("ERROR");
+          alert("Please enter valid numbers!");
+          return false;
+        }
+
+        calculator.a = parseInt(inputOneValue);
+        calculator.b = parseInt(inputTwoValue);
+        return true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <input type="text" id="inputOne" />
+    <input type="button" value="+" onclick="add()" />
+    <input type="button" value="*" onclick="multiply()" />
+    <input type="button" value="-" onclick="extract()" />
+    <input type="button" value=":" onclick="divide()" />
+    <input type="text" id="inputTwo" />
+    <span id="resultSpan"> </span>
+  </body>
+</html>

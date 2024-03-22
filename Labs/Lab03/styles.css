@@ -1,0 +1,162 @@
+.header-nav-stuff {
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-nav-stuff button {
+  background-color: white;
+}
+
+.header-nav-stuff input {
+  height: 35px;
+  width: 60%;
+  border-radius: 8px;
+  border-color: grey;
+}
+
+/*without border*/
+.header-nav-stuff .button-type1 {
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/*with border*/
+.header-nav-stuff .button-type2 {
+  padding: 2.4px;
+  margin: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/*sign up button*/
+#header-signup {
+  background-color: black;
+  color: white;
+  width: 100px;
+}
+
+#header-login {
+  width: 100px;
+}
+
+#header-settings {
+  display: none;
+}
+
+#header-search {
+  display: none;
+}
+
+/*responsive part*/
+@media screen and (max-width: 1080px) {
+  #header-business {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #header-teach {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .header-nav-stuff input {
+    display: none;
+  }
+  #header-category {
+    display: none;
+  }
+
+  #header-business {
+    display: none;
+  }
+
+  #header-teach {
+    display: none;
+  }
+  #header-login {
+    display: none;
+  }
+
+  #header-signup {
+    display: none;
+  }
+
+  #header-globe {
+    display: none;
+  }
+
+  #header-shopping-cart {
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: right;
+    order: 3;
+  }
+
+  #header-logo {
+    order: 2;
+    width: 70%;
+    order: 2;
+  }
+  #header-settings {
+    display: block;
+    order: 1;
+  }
+
+  #header-search {
+    display: block;
+    margin-right: 0px;
+    order: 4;
+  }
+}
+
+.black-body-part {
+  height: 380px;
+  background-color: dimgray;
+  padding-left: 10%;
+  padding-right: 40%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.left-part a {
+  padding-right: 20px;
+  color: plum;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content {
+  height: 1000px;
+  background-image: linear-gradient(rgba(49, 43, 46, 0.963) 30%, white 30%);
+  background-size: 100% 100%;
+  display: flex;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.left-part {
+  margin-top: 50px;
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.left-upper-part {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.right-part {
+  margin-top: 50px;
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
