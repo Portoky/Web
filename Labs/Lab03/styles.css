@@ -116,15 +116,6 @@
   }
 }
 
-.black-body-part {
-  height: 380px;
-  background-color: dimgray;
-  padding-left: 10%;
-  padding-right: 40%;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
 .left-part a {
   padding-right: 20px;
   color: plum;
@@ -135,16 +126,17 @@
 
 .content {
   height: 1000px;
+  width: 100%;
   background-image: linear-gradient(rgba(49, 43, 46, 0.963) 30%, white 30%);
   background-size: 100% 100%;
   display: flex;
-  padding-left: 20%;
-  padding-right: 20%;
+  justify-content: center;
 }
 
 .left-part {
   margin-top: 50px;
-  width: 50%;
+  padding-right: 50px;
+  width: 600px;
   display: inline-block;
   vertical-align: middle;
 }
@@ -152,11 +144,113 @@
 .left-upper-part {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 50px;
+}
+
+.left-lower-part {
+  padding-left: 5%;
+  font-family: Arial, Helvetica, sans-serif;
+  border-style: solid;
+  border-width: 2px;
+}
+.list-part {
+  display: flex;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.check-list {
+  list-style-type: none;
+  margin-left: 0;
+  width: 40%;
+}
+
+.check-list li::before {
+  content: "\2713";
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.5em;
 }
 
 .right-part {
+  background-color: white;
+  border-width: 2px;
+  border-color: white;
   margin-top: 50px;
-  width: 50%;
+  width: 400px;
   display: inline-block;
-  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.right-part-under {
+  margin: 20px;
+}
+
+.right-part-under .price {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.right-part-under .ex-price {
+  font-size: medium;
+  color: lightslategray;
+}
+
+.add-to-cart-button {
+  width: 100%;
+  background-color: rgb(154, 31, 154);
+  color: white;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.buy-now-button {
+  width: 100%;
+  background-color: white;
+  height: 50px;
+  margin-top: 10px;
+}
+.text-cont {
+  color: lightslategray;
+  font-size: small;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.right-part ul {
+  list-style-type: none;
+}
+.right-part li {
+  margin-bottom: 5px;
+  font-weight: lighter;
+  color: grey;
+}
+
+.content2 {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .content {
+    display: none;
+  }
+  .content2-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .content2 {
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 25px;
+    display: block;
+    width: 700px;
+    align-items: center;
+  }
+
+  .content2 a {
+    color: rgb(194, 38, 194);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
 }
