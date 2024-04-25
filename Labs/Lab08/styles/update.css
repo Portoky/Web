@@ -1,0 +1,6 @@
+#formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Stretch items to fill container horizontally */
+  width: 300px; /* Adjust width as needed */
+}
