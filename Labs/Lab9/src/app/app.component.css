@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+
+#userTableContainer {
+  text-align: center;
+}
+
+#userTable {
+  margin: auto;
+}
+table {
+  width: 1000px;
+}
+#userTable td {
+  width: 100px;
+}
+
+.buttonContainer {
+  text-align: center;
+}
