@@ -7,9 +7,9 @@
       <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
     </select>
     <br />
+    Previous search: {{prevSearch}}
     <br />
-    <div id="userTableContainer">
-      <div [innerHTML]="tableHtml"></div>
+    <div #userTableContainer id=userTableContainer>
     </div>
     <br />
     <div class="buttonContainer">

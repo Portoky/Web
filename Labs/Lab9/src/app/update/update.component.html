@@ -1,0 +1,30 @@
+<body>
+<h2>Update user:</h2>
+<div id="formContainer">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name"  [(ngModel)]="name"/><br />
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username"  [(ngModel)]="username"/><br />
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password"  [(ngModel)]="password"/><br />
+
+  <label for="roleSelect">Role:</label>
+  <select id="roleSelect"  [(ngModel)]="roleSelected">
+    <option text="" value=""></option>
+    <option *ngFor="let role of roles" value="role">{{role}}</option>
+  </select
+  ><br />
+
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email"  [(ngModel)]="email"/><br />
+
+  <label for="age">Age:</label>
+  <input type="text" id="age" name="age"  [(ngModel)]="age"/><br />
+
+  <label for="webpage">Webpage:</label>
+  <input type="text" id="webpage" name="webpage"  [(ngModel)]="webpage"/><br />
+</div>
+<button id="updateButton" (click)="onUpdateClick()">Edit User</button>
+</body>

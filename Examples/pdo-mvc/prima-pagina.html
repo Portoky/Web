@@ -1,0 +1,82 @@
+<html>
+<head>
+	<style type="text/css">
+		.mytablerow {
+			background-color: #ff9999;
+		}
+	</style>
+	<script src="js/jquery-2.0.3.js"></script>
+	<script language="javascript">
+		function showUser(user) {
+			var content = "ID: "+ user.id + "<br/>" +
+						  "Name: " + user.name + "<br/>" + 
+						  "GroupID: " + user.group_id + "<br/>" +
+						  "Password: " + user.password + "<br/>";
+			$("#main").html(content);
+		}
+
+		function showAllGrades(grades) {
+			var content = "<table><thead><tr><td>ID</td><td>Name</td><td>Group ID</td><td>Grades</td></tr></thead>";
+			console.log(grades);
+			i=0;
+			grades.forEach(elem => {
+					student = elem;
+					if (i % 2 == 0) {
+						content += "<tr class='mytablerow'>";
+					} else {
+						content += "<tr>";
+					}
+					i++;
+					content += "<td>" + student.id + "</td>" +
+							   "<td>" + student.name + "</td>" +
+							   "<td>" + student.group_id + "</td>" +
+							   "<td>";
+					student.grades.forEach(grade => {
+						content += "Course: " + grade.course + ", Grade: " + grade.grade + " <br/> ";
+					});
+					content +="</td></tr>";
+			});
+			content += "</table>";
+
+			$("#main").html(content);
+		}
+
+		$(document).ready(function() {
+			$("#btn_getUser").click(function() {
+				$.getJSON(
+					"controller/controller.php",  
+					{ action: "getUser", user: $('#user').val() }, 
+					showUser 
+				);
+			});
+
+			$("#btn_getGrades").click(function() {
+				$.getJSON(
+					"controller/controller.php",  
+					{ action: "getAllGrades" }, 
+					showAllGrades 
+				);
+			});
+		});
+	</script>
+</head>
+<body>
+
+<section style="border: 1px solid red; width: 400px">
+Get user details:<br/>
+	Name: <input type="text" name="user" id="user"/> <br/>
+	<input type="button" id="btn_getUser" value="Get details"/><br/>
+</section>
+
+<p></p>
+
+<section style="border: 1px solid red; width: 400px">
+Get all grades:<br/>
+	<input type="button" id="btn_getGrades" value="Get all grades"/><br/>
+</section>
+<hr/>
+
+<section id="main"></section>
+
+</body>
+</html>

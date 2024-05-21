@@ -28,15 +28,16 @@ export class AddComponent {
   constructor(private genericService: GenericService, private router: Router) {
   }
   onAddClick() {
+    if(this.name === "" || this.username === "" || this.password === "" || this.roleSelected ==="" || this.email=== "" ||
+    this.age === "" || this.webpage === "")
+    {
+      alert("There are empty fields!");
+      return;
+    }
+    //console.log(this.roleSelected)
     this.genericService.addUser(this.name, this.username, this.password, this.roleSelected, this.email, this.age, this.webpage)
-      .subscribe((html) => {
-        // Handle success, maybe show a message
-        console.log(html);
-        // Then navigate
-        this.router.navigate([""]);
-      }, error => {
-        // Handle error
-        console.error("Error adding user:", error);
+      .subscribe({
+        next: ()=>{console.log("success"); this.router.navigate([""])},
       });
   }
 }

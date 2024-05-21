@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-      console.log("AppComponent init");
-    this.getUsersFromPhpBackend();
   }
 
   getUsersFromPhpBackend(){
