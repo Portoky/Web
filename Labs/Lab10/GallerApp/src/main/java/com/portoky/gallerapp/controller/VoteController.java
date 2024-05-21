@@ -33,17 +33,18 @@ public class VoteController extends HttpServlet {
             Integer pictureId = Integer.valueOf(stringPictureId); //getting the pictureId
             //getting the vote
             Integer vote =  Integer.valueOf(request.getParameter(stringPictureId));
+            //validation
             if(dbManager.hasVote(user.getUserId(), pictureId)){ //if you voted you cannot once again!!!!
-                request.setAttribute("errorVotingMess", "You have already voted for this picture.");
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-                rd.forward(request, response);
-                return;
-            }else {
+                request.setAttribute("alreadyVotedErrMess", "You have already voted for this picture.");
+
+            }
+            if(dbManager.getPicturesUserId(pictureId).equals(user.getUserId())){ //cannot vote for you own picture
+                request.setAttribute("ownPictureVotedErrMess", "You cannot vote for your own picture.");
+            }
+            else {
                 dbManager.addVote(user.getUserId(), pictureId, vote);
             }
-            response.sendRedirect(request.getContextPath() + "/");
         }
-
-
+        response.sendRedirect(request.getContextPath() + "/");
     }
 }

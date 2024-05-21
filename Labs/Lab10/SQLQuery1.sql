@@ -34,5 +34,5 @@ SELECT p.pictureId, p.Filename,  SUM(v.Vote) as TotalVotes
                     Order by TotalVotes DESC
 
 ALTER TABLE pictures DROP COLUMN Image;
-select * from pictures;
+select * from pictures where ;
 delete from pictures;

@@ -41,6 +41,7 @@ public class DbManager {
             if (rs.next()) {
                 user = new User(rs.getInt("USerId"), rs.getString("Username"), rs.getString("Password"));
             }
+            return user;
         }catch (SQLException e){
             e.printStackTrace();
         }finally{
@@ -80,8 +81,8 @@ public class DbManager {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            return pictures;
         }
-        return pictures;
     }
 
     public void  uploadImageToDb(Integer userId, String filename){
@@ -124,6 +125,7 @@ public class DbManager {
                }
            }
         return false;
+
     }
 
     public void addVote(Integer userId, Integer pictureId, Integer vote) {
@@ -143,5 +145,29 @@ public class DbManager {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Integer getPicturesUserId(Integer pictureId) {
+        try{
+            String sql = "SELECT p.UserId from pictures p" +
+                    " WHERE p.PictureId = " + pictureId;
+            stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                Integer userId = rs.getInt(1);
+                return userId;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if(stmt!=null) stmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return -1;
     }
 }

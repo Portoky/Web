@@ -15,8 +15,11 @@
     <style>
         .pictureRow {
             display: flex;
+            height: 300px;
         }
         .picture{
+            height: 200px;
+            width:  200px;
             display: inline-block;
             border-width: 20px;
             padding: 5px;
@@ -26,6 +29,34 @@
 </head>
 <body>
     <h1>Gallery</h1>
+    <%
+        if(request.getAttribute("ownPictureVotedErrMess") != null){
+            %>  <p style='color:red'>You cannot vote for your own image!</p> <%
+        }
+        if(request.getAttribute("alreadyVotedErrMess")!= null){
+            %>  <p style='color:red'>You have already voted for this image!</p> <%
+        }
+
+        int displayCount = 5; // Default number of images to display
+        String countParam = request.getParameter("count");
+        if (countParam != null) {
+            try {
+                displayCount = Integer.parseInt(countParam);
+            } catch (NumberFormatException e) {
+                // Handle the error if needed, fall back to default value
+            }
+        }
+    %>
+    <form method="get" action="">
+        <label for="count">Number of images to display:</label>
+        <select id="count" name="count" onchange="this.form.submit()">
+            <option value="100000"<%= (displayCount == 100000) ? "selected" : "" %>>All</option>
+            <option value="5" <%= (displayCount == 5) ? "selected" : "" %>>5</option>
+            <option value="10" <%= (displayCount == 10) ? "selected" : "" %>>10</option>
+            <option value="15" <%= (displayCount == 15) ? "selected" : "" %>>15</option>
+            <option value="20" <%= (displayCount == 20) ? "selected" : "" %>>20</option>
+        </select>
+    </form>
     <div id="pictureRowContainer">
         <%
             DbManager dbManager = new DbManager();
@@ -35,42 +66,54 @@
             if(imageDirectoryPath == null){
                 imageDirectoryPath = "uploads";
             }*/
-            int endIndex = 5;
+            int stopIndex = Math.min(displayCount, pictures.size()); //stop for whole
+            int endIndex = 5; //end for a row
             int startIndex = 0;
-            while(endIndex < pictures.size()){
+            while(endIndex < stopIndex){
                 List<Picture> rowPictures = pictures.subList(startIndex, endIndex);
 
                 %><div class='pictureRow'><%
                 for(Picture rowPicture : rowPictures){
                     %>
                         <div class="picture">
-                            <img src="src/main/webapp/uploads/<%= rowPicture.getFilename() %>" alt="picture">
-                            <input style="margin:auto" type="number" name="vote_<%= rowPicture.getPictureId() %>" min="1" max="5">
+                            <img src= "uploads/<%= rowPicture.getFilename() %>" alt="<%=rowPicture.getFilename()%>" width="200">
+                            <div>
+                                <form action="vote" method="post">
+                                    <p>Votes: <%= rowPicture.getTotalVotes() %></p>
+                                    <input type="number" name="<%= rowPicture.getPictureId() %>" min="1" max="5">
+                                    <button type="submit">Vote</button>
+                                </form>
+                            </div>
                         </div>
                     <%
                 }
                 startIndex = endIndex;
                 endIndex = endIndex + 5;
+                %></div><%
+
             }
-            if(startIndex != pictures.size()){
-                List<Picture> rowPictures = pictures.subList(startIndex, pictures.size());
+
+            if(startIndex != stopIndex){
+                List<Picture> rowPictures = pictures.subList(startIndex, stopIndex);
+                %>
+        <div class='pictureRow'><%
                 for(Picture rowPicture : rowPictures){
                     %>
                         <div class="picture">
                             <img src= "uploads/<%= rowPicture.getFilename() %>" alt="<%=rowPicture.getFilename()%>" width="200">
-                            <br/>
-                            <form action="vote" method="post">
-                                <p>Votes: <%= rowPicture.getTotalVotes() %></p>
-                                <input type="number" name="<%= rowPicture.getPictureId() %>" min="1" max="5">
-                                <button type="submit">Vote</button>
-                            </form>
-                            <br/>
+                            <div>
+                                <form action="vote" method="post">
+                                    <p>Votes: <%= rowPicture.getTotalVotes() %></p>
+                                    <input type="number" name="<%= rowPicture.getPictureId() %>" min="1" max="5">
+                                    <button type="submit">Vote</button>
+                                </form>
+                            </div>
 
                         </div>
                     <%
                 }
             }
-            %></div><%
+                %></div><%
          %>
         <!--for upload-->
         <div class="uploadContainer">
