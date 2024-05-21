@@ -32,7 +32,11 @@ public class VoteController extends HttpServlet {
             String stringPictureId = (String)picturesIds.nextElement();
             Integer pictureId = Integer.valueOf(stringPictureId); //getting the pictureId
             //getting the vote
-            Integer vote =  Integer.valueOf(request.getParameter(stringPictureId));
+            String stringVote = request.getParameter(stringPictureId);
+            if(stringVote.equals("")){
+                response.sendRedirect(request.getContextPath() + "/");
+            }
+            Integer vote =  Integer.valueOf(stringVote);
             //validation
             if(dbManager.hasVote(user.getUserId(), pictureId)){ //if you voted you cannot once again!!!!
                 request.setAttribute("alreadyVotedErrMess", "You have already voted for this picture.");
