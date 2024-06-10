@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/Main.css" />
+}
+@section Scripts{
+    <script src="~/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="~/js/main.js"></script>
+}
+
+<body>
+    <h1>User Management Application</h1>
+    Search by name:
+    <br />
+    <input id="nameFilter" name="nameFilter" />
+    <select id="roleSelect">
+        <option text="" value=""></option>
+    </select>
+    Searched previously: 
+    <div id="lastSearch"></div>
+    <br />
+    <br />
+    <div id="userTableContainer"></div>
+    <br />
+    <div class="buttonContainer">
+        <button id="addButton">Add</button>
+        <button id="updateButton">Update</button>
+        <button id="removeButton">Remove</button>
+    </div>
+    <div id="confirmDiv"></div>
+</body>
